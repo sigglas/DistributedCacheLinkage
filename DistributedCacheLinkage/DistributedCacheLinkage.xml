@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DistributedCacheLinkage</name>
+    </assembly>
+    <members>
+        <member name="M:DistributedCacheLinkage.Objects.BaseProxy.MemoryClear">
+            <summary>
+            清除暫存
+            </summary>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.BaseProxy.MemoryRefresh">
+            <summary>
+            重置暫存時間
+            </summary>
+        </member>
+        <member name="T:DistributedCacheLinkage.Objects.IEntityMany`2">
+            <summary>
+            需要暫存特定資料集合時使用
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TEntityKey"></typeparam>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.IEntityMany`2.GetObject(`1)">
+            <summary>
+            同類型資料個別唯一性的，需要KEY來取得時使用
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.IEntityMany`2.PutObject(`0,`1)">
+            <summary>
+            同類型資料個別唯一性時使用的
+            </summary>
+            <param name="entity"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DistributedCacheLinkage.Objects.IEntityOne`1">
+            <summary>
+            需要暫存特定某一份資料時使用
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.IEntityOne`1.GetObject">
+            <summary>
+            資料屬於唯一性的，不需要KEY直接取得時使用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.IEntityOne`1.GetObject``1(``0)">
+            <summary>
+            資料屬於唯一性的，不需要KEY直接取得時使用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.IEntityOne`1.PutObject(`0)">
+            <summary>
+            更新資料，當整體資料來源屬於只有一份時使用的
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DistributedCacheLinkage.Objects.ManyObjectProxy`2">
+            <summary>
+            需要暫存特定資料集合時使用
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TEntityKey"></typeparam>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.ManyObjectProxy`2.GetObject(`1)">
+            <summary>
+            同類型資料個別唯一性的，需要KEY來取得時使用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.ManyObjectProxy`2.PutObject(`0,`1)">
+            <summary>
+            同類型資料個別唯一性時使用的
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DistributedCacheLinkage.Objects.OneObjectProxy`1">
+            <summary>
+            需要暫存特定某一份資料時使用
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.OneObjectProxy`1.SetOption(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.OneObjectProxy`1.GetObject">
+            <summary>
+            資料屬於唯一性的，不需要KEY直接取得時使用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Objects.OneObjectProxy`1.PutObject(`0)">
+            <summary>
+            資料屬於只有一份時使用的
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DistributedCacheLinkage.Repositories.IEntityRepository`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TEntityKey"></typeparam>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.IEntityRepository`2.GetEntities(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            從暫存區中取得資料實體，若條件無資料，將會從你的Repository中取得並記錄至暫存區中
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.IEntityRepository`2.Add(`0)">
+            <summary>
+            加入資料實體，並更新記錄至暫存區中
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.IEntityRepository`2.Update(`0)">
+            <summary>
+            更新資料實體，並移除原暫存區的紀錄，加入新的記錄至暫存區中
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.IEntityRepository`2.Remove(`1)">
+            <summary>
+            移除資料實體，並移除原暫存區的紀錄
+            </summary>
+            <param name="keyId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DistributedCacheLinkage.Repositories.RepositoryProxy`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TEntityKey"></typeparam>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.#ctor(Microsoft.Extensions.Caching.Distributed.IDistributedCache,DistributedCacheLinkage.Repositories.IEntityRepository{`0,`1})">
+            <summary>
+            
+            </summary>
+            <param name="distributed"></param>
+            <param name="repository"></param>
+            <param name="autoCommit"></param>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.MemoryClear">
+            <summary>
+            清除暫存
+            </summary>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.MemoryRefresh">
+            <summary>
+            重置暫存時間
+            </summary>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.MemoryCommit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.Rollback">
+            <summary>
+            如果新增或刪除時，實體的repo發生錯誤或拒絕寫入或發生rollback，可以呼叫此處清除此次的暫存
+            </summary>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.GetEntities(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            從暫存區中取得資料實體，若條件無資料，將會從你的Repository中取得並記錄至暫存區中
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.Add(`0)">
+            <summary>
+            加入資料實體，並更新記錄至暫存區中
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.Update(`0)">
+            <summary>
+            更新資料實體，並移除原暫存區的紀錄，加入新的記錄至暫存區中
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.Remove(`1)">
+            <summary>
+            移除資料實體，並移除原暫存區的紀錄
+            </summary>
+            <param name="keyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DistributedCacheLinkage.Repositories.RepositoryProxy`2.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>
